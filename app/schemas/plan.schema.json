@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Plan",
+  "type": "object",
+  "properties": {
+    "planCostShares": {
+      "type": "object",
+      "properties": {
+        "deductible": { "type": "number" },
+        "_org": { "type": "string" },
+        "copay": { "type": "number" },
+        "objectId": { "type": "string" },
+        "objectType": { "const": "membercostshare" }
+      },
+      "required": ["deductible", "copay", "objectId", "objectType"]
+    },
+    "linkedPlanServices": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "linkedService": {
+            "type": "object",
+            "properties": {
+              "_org": { "type": "string" },
+              "objectId": { "type": "string" },
+              "objectType": { "const": "service" },
+              "name": { "type": "string" }
+            },
+            "required": ["objectId", "objectType", "name"]
+          },
+          "planserviceCostShares": {
+            "type": "object",
+            "properties": {
+              "deductible": { "type": "number" },
+              "_org": { "type": "string" },
+              "copay": { "type": "number" },
+              "objectId": { "type": "string" },
+              "objectType": { "const": "membercostshare" }
+            },
+            "required": ["deductible", "copay", "objectId", "objectType"]
+          },
+          "_org": { "type": "string" },
+          "objectId": { "type": "string" },
+          "objectType": { "const": "planservice" }
+        },
+        "required": ["linkedService", "planserviceCostShares", "objectId", "objectType"]
+      }
+    },
+    "_org": { "type": "string" },
+    "objectId": { "type": "string" },
+    "objectType": { "const": "plan" },
+    "planType": { "type": "string" },
+    "creationDate": { "type": "string" }
+  },
+  "required": [
+    "planCostShares",
+    "linkedPlanServices",
+    "objectId",
+    "objectType",
+    "planType",
+    "creationDate"
+  ],
+  "additionalProperties": true
+}

@@ -1,0 +1,13 @@
+
+# dependencies
+node_modules/
+# production
+dist/
+.env
+npm-debug.log
+.DS_Store
+
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
